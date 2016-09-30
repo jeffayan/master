@@ -10,15 +10,23 @@
 <title>Angular</title>
 </head>
 <body>
-   <div ng-app="myApp" ng-controller="mytrl">
-        <input type="text" ng-blur="num=num+1" ng-model="name" placeholder="Enter Something" ng-init="num=0" >
-        <p>{{name}}<p>
-        <h1 ng-bind-html="num"></h1>
+   <div ng-app="">
+        <!-- <input type="text" ng-blur="num=num+1" ng-model="name" placeholder="Enter Something" ng-init="num=0" >
+        <p ng-change="func()">{{name}}<p>
+        <h1 ng-model="mydata"></h1> -->
+        
+        <input type="checkbox" ng-model="all" >all
+        <input type="checkbox" ng-checked="all" >one 
+        <input type="checkbox" ng-checked="all" >two
+        
+        
    </div>
       <script>
       		var app = angular.module("myApp",['ngSanitize']);
       		app.controller("mytrl",function($scope){
-      			$scope.mtext="hai";
+      			$scope.func= function(){
+      				$scope.mydata=$scope.name	;
+      			};
       			
       		});
       	
@@ -31,6 +39,15 @@
       		});
       		      		
       </script>
+      
+      <script>
+    angular.module('myApp',[]).controller('myCtrl',['$scope',function($scope){
+         $scope.func= function(){
+          alert('Copy not allowed');
+}
+}])
+</script>
+      
    
 </body>
 </html>
