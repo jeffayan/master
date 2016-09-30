@@ -1,0 +1,19 @@
+value="${pageContext.request.contextPath}/answer/${images}"
+
+var reader = new FileReader();
+reader.readAsText({images});
+
+fileArea.innerText = reader.result;
+
+hh
+
+
+
+
+
+
+www
+
+
+
+wwwwwww

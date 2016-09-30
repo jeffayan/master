@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+   
+   
+   <hibernate-mapping>
+   <class name="jeff.bean.CityBean" table ="city">
+   <id name="cityId" column="cityId" ><generator class="assigned"/> </id>
+   <property name="city" column="city" />
+   <property name="districtId" column="districtId"></property>
+   </class>
+   
+   <class name="jeff.bean.DistrictBean" table ="district">
+   <id name="districtId" column = "districtId"><generator class="assigned"/> </id>
+   <property name="district" column="district" />
+   <property name="stateId" column ="stateId"/>   
+   </class>
+   
+   <class name="jeff.bean.StateBean" table ="state">
+   <id name="stateId" column="stateId" ><generator class="assigned" /></id>
+   <property name="state" column="state"/>
+   </class>
+   
+   <class name="jeff.bean.EmployeeBean" table="employee">
+   <id name="empId" column="empId"><generator class="identity"/> </id>
+   <property name="empName" column="empName"/>
+   <property name="gender" column="gender"/>
+   <property name="dateOfBirth" column="dateOfBirth"/>
+   <property name="maritalStatus" column="maritalStatus"/>
+   <property name="designation" column="designation"/>
+   <bag name="address" table="empaddress" fetch="select" cascade ="save-update,all-delete-orphan" lazy="false" inverse="true" >
+      <key column="empId" not-null="true"/>
+      <one-to-many class="jeff.bean.AddressBean"/>
+   </bag>
+   </class>
+   
+   <class name= "jeff.bean.AddressBean" table="empaddress" >
+   <id name="addId" column="addId"><generator class="increment"/> </id>
+   <property name="empId" column="empId" />
+   <property name="stateId" column="stateId" />
+   <property name="districtId" column="districtId" />
+   <property name="cityId" column="cityId" /> 
+    
+<!--  <bag name="stateBag" table="state" fetch="select" lazy="false" inverse="true" >
+      <key column="stateId" not-null="true"/>
+      <one-to-many class="jeff.bean.StateBean"/>
+   </bag> -->
+  
+	   <many-to-one name="state" column="stateId" not-null="true" class="jeff.bean.StateBean" lazy="false" insert="false" update="false" />
+	   <many-to-one name="district" column="districtId" class="jeff.bean.DistrictBean"  lazy="false" insert="false" update="false"/>
+	   <many-to-one name="city" column="cityId" class="jeff.bean.CityBean" lazy="false" insert="false" update="false"/> 
+   </class>
+   </hibernate-mapping>
