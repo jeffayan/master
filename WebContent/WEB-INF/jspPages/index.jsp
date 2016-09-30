@@ -40,14 +40,34 @@
       		      		
       </script>
       
-      <script>
+ <!--      <script>
     angular.module('myApp',[]).controller('myCtrl',['$scope',function($scope){
          $scope.func= function(){
           alert('Copy not allowed');
 }
 }])
-</script>
+</script> -->
       
+   
+   <!-- test for checkbox with hide and show -->
+   
+<!--    <div ng-app="myApp" ng-controller="myCtrl">
+   <input type="checkbox" ng-model="answer" ng-change="stateChanged()" />
+<div ng-hide="bool">hello</div>
+</div>
+<script>
+    angular.module('myApp',[]).controller('myCtrl',['$scope',function($scope){
+         $scope.bool=false;
+         $scope.stateChanged= function(){
+            if($scope.answer==true)
+                $scope.bool=true;
+            else  $scope.bool=false;
+          //alert($scope.answer);
+           
+}
+}])
+</script> -->
+   
    
 </body>
 </html>
