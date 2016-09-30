@@ -11,9 +11,9 @@
 </head>
 <body>
    <div ng-app="myApp" ng-controller="mytrl">
-        <input type="text" ng-model="name" placeholder="Enter Something">
-        <input id="mydata"  type="text" value ={{name}}>
-        <h1 ng-bind-html="mtext"></h1>
+        <input type="text" ng-blur="num=num+1" ng-model="name" placeholder="Enter Something" ng-init="num=0" >
+        <p>{{name}}<p>
+        <h1 ng-bind-html="num"></h1>
    </div>
       <script>
       		var app = angular.module("myApp",['ngSanitize']);
@@ -23,8 +23,11 @@
       		});
       	
       		
-      		$('#mydata').change(function(){
-      			console.log("1");
+      		$('input').change(function(){
+      			app.controller("mytrl",function($scope){
+          			$scope.mtext=$('p[0]').val();
+          			
+          		});
       		});
       		      		
       </script>
