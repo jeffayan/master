@@ -9,7 +9,8 @@
 </head>
 <body>
    <div ng-app="">
-        <input type="text" >
+        <input type="text" ng-model="name" placeholder="Enter Something">
+        <h1>{{name}}</h1>
    </div>
 </body>
 </html>
