@@ -10,6 +10,9 @@
 <title>Angular</title>
 </head>
 <body>
+<div >
+  <p id="upload">click Me</p>
+</div>
    <div ng-app="">
         <!-- <input type="text" ng-blur="num=num+1" ng-model="name" placeholder="Enter Something" ng-init="num=0" >
         <p ng-change="func()">{{name}}<p>
@@ -22,6 +25,11 @@
         
    </div>
       <script>
+      $('#upload').click(function(){
+    	    $('input[type=file]').click();
+    	    return false;
+    	});
+      
       		var app = angular.module("myApp",['ngSanitize']);
       		app.controller("mytrl",function($scope){
       			$scope.func= function(){
